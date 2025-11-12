@@ -9,9 +9,9 @@ const TheatreList = () => {
   }, []);
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-semibold mb-3">Available Operation Theatres</h2>
-      <ul className="list-disc ml-6">
+    <div className="p-4 bg-white rounded-2xl shadow-md mb-4">
+      <h2 className="text-lg font-semibold mb-3 text-blue-700">Available OTs</h2>
+      <ul className="list-disc ml-6 text-gray-700">
         {ots.map((ot) => (
           <li key={ot.id}>{ot.name}</li>
         ))}

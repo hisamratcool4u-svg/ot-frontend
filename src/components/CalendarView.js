@@ -39,15 +39,15 @@ const CalendarView = () => {
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Operation Theatre Schedule</h2>
+    <div className="p-6 bg-white rounded-2xl shadow-md">
+      <h2 className="text-2xl font-bold mb-4 text-blue-700">Operation Theatre Schedule</h2>
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="timeGridWeek"
         selectable={true}
         select={handleDateSelect}
         events={events}
-        height="85vh"
+        height="80vh"
       />
     </div>
   );
