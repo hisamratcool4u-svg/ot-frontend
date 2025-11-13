@@ -60,28 +60,41 @@ export default function CalendarPage(){
     setModalOpen(true)
   }
 
-  async function saveEvent(payload){
-    try{
-      if(payload.id){
-        await axios.put(`${API}/bookings/${payload.id}`, {
-          scheduledStart: payload.start,
-          scheduledEnd: payload.end
-        })
-      } else {
-        await axios.post(`${API}/bookings`, {
-          patientName: payload.title,
-          scheduledStart: payload.start,
-          scheduledEnd: payload.end,
-          status: payload.status || 'SCHEDULED'
-        })
-      }
-      setModalOpen(false)
-      fetchEvents()
-    }catch(e){
-      console.error('save error', e)
-      alert('Unable to save. Check console.')
-    }
-  }
+	async function saveEvent(payload) {
+	  try {
+		// Convert JS Date objects → ISO 8601 strings with +05:30 offset
+		const toOffsetString = (date) => {
+		  if (!date) return null
+		  // Ensure it’s a Date instance
+		  const d = new Date(date)
+		  // Format with +05:30 timezone instead of Z (UTC)
+		  return d.toISOString().replace('Z', '+05:30')
+		}
+
+		const start = toOffsetString(payload.start)
+		const end = toOffsetString(payload.end)
+
+		if (payload.id) {
+		  await axios.put(`${API}/bookings/${payload.id}`, {
+			scheduledStart: start,
+			scheduledEnd: end
+		  })
+		} else {
+		  await axios.post(`${API}/bookings`, {
+			patientName: payload.title,
+			scheduledStart: start,
+			scheduledEnd: end,
+			status: payload.status || 'SCHEDULED'
+		  })
+		}
+
+		setModalOpen(false)
+		fetchEvents()
+	  } catch (e) {
+		console.error('save error', e)
+		alert('Unable to save. Check console.')
+	  }
+	}
 
   return (
     <div>
