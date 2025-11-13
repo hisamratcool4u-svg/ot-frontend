@@ -1,22 +1,28 @@
 {
-  "name": "ot-frontend",
+  "name": "ot-frontend-pro",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "@fullcalendar/daygrid": "^6.1.8",
-    "@fullcalendar/interaction": "^6.1.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "axios": "^1.4.0",
     "@fullcalendar/react": "^6.1.8",
     "@fullcalendar/timegrid": "^6.1.8",
-    "axios": "^1.6.7",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.22.3",
-    "react-scripts": "5.0.1"
+    "@fullcalendar/daygrid": "^6.1.8",
+    "@fullcalendar/interaction": "^6.1.8",
+    "flatpickr": "^4.6.13",
+    "react-flatpickr": "^3.10.7"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "tailwindcss": "^4.4.7",
+    "postcss": "^8.4.27",
+    "autoprefixer": "^10.4.14",
+    "@vitejs/plugin-react": "^4.0.0"
   }
 }
